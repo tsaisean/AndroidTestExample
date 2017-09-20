@@ -14,6 +14,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -159,5 +160,28 @@ public class MockitoTest {
         inOrder2.verify(secondMock).add("was called second");
 
         // Oh, and A + B can be mixed together at will
+    }
+
+    @Test
+    public void test13_spy() {
+        List list = new LinkedList();
+        List spy = spy(list);
+
+        //optionally, you can stub out some methods:
+        when(spy.size()).thenReturn(100);
+
+        //using the spy calls *real* methods
+        spy.add("one");
+        spy.add("two");
+
+        //prints "one" - the first element of a list
+        System.out.println(spy.get(0));
+
+        //size() method was stubbed - 100 is printed
+        System.out.println(spy.size());
+
+        //optionally, you can verify
+        verify(spy).add("one");
+        verify(spy).add("two");
     }
 }
