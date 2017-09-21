@@ -39,7 +39,7 @@ public class MockitoTest {
         verify(mockedList).clear();
     }
 
-    @Test
+    @Test (expected = RuntimeException.class)
     public void test2_stub() {
         //You can mock concrete classes, not just interfaces
         LinkedList mockedList = mock(LinkedList.class);
@@ -117,7 +117,7 @@ public class MockitoTest {
     }
 
 
-    @Test
+    @Test (expected = RuntimeException.class)
     public void test5_stubbingVoidMethodsWithExceptions() {
         //You can mock concrete classes, not just interfaces
         LinkedList mockedList = mock(LinkedList.class);
