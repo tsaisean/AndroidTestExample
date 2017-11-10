@@ -1,7 +1,15 @@
 package com.example.sean.androidtestexample.mockito;
 
+import junit.framework.Assert;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,13 +25,22 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.verifyNoMoreInteractions;
 
 /**
  * Created by Sean on 2017/9/18.
  */
 
 public class MockitoTest {
+    @Mock
+    private List annotationMockedList;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void test1_verify() {
@@ -160,6 +177,90 @@ public class MockitoTest {
         inOrder2.verify(secondMock).add("was called second");
 
         // Oh, and A + B can be mixed together at will
+    }
+
+    @Test
+    public void test7_zeroInteractions() {
+        List mockedListA = mock(List.class);
+        List mockedListB = mock(List.class);
+
+        mockedListA.add("one");
+
+        verifyZeroInteractions(mockedListB);
+    }
+
+    @Test
+    public void test8_zeroInteractions() {
+        List mockedListA = mock(List.class);
+        mockedListA.add("one");
+        mockedListA.add("two");
+
+        verify(mockedListA).add("one");
+
+        //following verification will fail
+        verifyNoMoreInteractions(mockedListA);
+    }
+
+    @Test
+    public void test9_mockAnnotation() {
+        // We put MockitoAnnotations.initMocks(this) in setUp().
+
+        annotationMockedList.add("one");
+        verify(annotationMockedList).add("one");
+    }
+
+    @Test
+    public void test10_stubbingConsecutiveCalls () {
+        when(annotationMockedList.add("some"))
+                .thenReturn(true)
+                .thenReturn(false);
+
+        Assert.assertEquals(true, annotationMockedList.add("some"));
+        Assert.assertEquals(false, annotationMockedList.add("some"));
+        Assert.assertEquals(false, annotationMockedList.add("some"));
+    }
+
+    @Test
+    public void test11_stubbingWithCallbacks() {
+        when(annotationMockedList.add(1)).thenAnswer(new Answer<Boolean>() {
+            @Override
+            public Boolean answer(InvocationOnMock invocationOnMock) throws Throwable {
+                return true;
+            }
+        });
+
+        Assert.assertEquals(true, annotationMockedList.add(1));
+        Assert.assertEquals(false, annotationMockedList.add(2));
+        Assert.assertEquals(false, annotationMockedList.add("some"));
+    }
+
+    @Test
+    public void test12_stubbingVoidMethods() {
+        List spiedList = spy(new LinkedList());
+
+        //let's make clear() do nothing
+        Mockito.doNothing().when(spiedList).clear();
+
+        spiedList.add("one");
+
+        //clear() does nothing, so the list still contains "one"
+        spiedList.clear();
+
+        Assert.assertEquals(1, spiedList.size());
+
+
+        Mockito.doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
+                ((List)invocationOnMock.getMock()).add(1);
+                ((List)invocationOnMock.getMock()).add(2);
+                return null;
+            }
+        }).when(spiedList).clear();
+
+        spiedList.clear();
+
+        Assert.assertEquals(3, spiedList.size());
     }
 
     @Test

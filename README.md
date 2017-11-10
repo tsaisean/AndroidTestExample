@@ -5,7 +5,7 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 ## JUnit Examples
 1. Assertions.
 
-## mockito Examples
+## Mockito Examples
 1. Let's verify some behaviour!
 2. How about some stubbing?
 3. Argument matchers
@@ -13,11 +13,11 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 5. Stubbing void methods with exceptions
 6. Verification in order
 7. Making sure interaction(s) never happened on mock
-8. **TODO:** Finding redundant invocations
-9. **TODO:** Shorthand for mocks creation - @Mock annotation
-10. **TODO:** Stubbing consecutive calls (iterator-style stubbing)
-11. **TODO:** Stubbing with callbacks
-12. **TODO:** doReturn()|doThrow()|doAnswer()|doNothing()|doCallRealMethod() family of methods
+8. Finding redundant invocations
+9. Shorthand for mocks creation - @Mock annotation
+10. Stubbing consecutive calls (iterator-style stubbing)
+11. Stubbing with callbacks
+12. doReturn()|doThrow()|doAnswer()|doNothing()|doCallRealMethod() family of methods
 13. Spying on real objects
 14. **TODO:** Changing default return values of unstubbed invocations (Since 1.7)
 15. **TODO:** Capturing arguments for further assertions (Since 1.8.0)
@@ -49,10 +49,10 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 41. **TODO:** (**new**) Advanced public API for framework integrations (Since 2.10.+)
 42. **TODO:** (**new**) New API for integrations: listening on verification start events (Since 2.11.+)
 
-## powermockito Examples
+## Powermockito Examples
 1. Mock static methods.
 
-## roboletric Examples
+## Roboletric Examples
 1. Assert the string value for the TextView.
 
 Ref: [Mockito's javadoc](https://static.javadoc.io/org.mockito/mockito-core/2.11.0/org/mockito/Mockito.html)
