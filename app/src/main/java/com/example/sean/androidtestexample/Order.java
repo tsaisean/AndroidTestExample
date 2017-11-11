@@ -8,11 +8,16 @@ public class Order {
     private long id;
     private Customer customer;
     private float originalTotal;
-    private float vipDiscount = 0.8f;
+    private float vipDiscount = DEFAULT_VIP_DISCOUNT;
+    private static final float DEFAULT_VIP_DISCOUNT = 0.8f;
 
     public Order(long id, Customer customer) {
         this.id = id;
         this.customer = customer;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setOriginalTotal(float originalTotal) {
@@ -25,5 +30,9 @@ public class Order {
 
     public float getTotal() {
         return CustomerUtils.isVIP(customer) ? getOriginalTotal() * vipDiscount : getOriginalTotal();
+    }
+
+    public float getDefaultVipDiscount() {
+        return DEFAULT_VIP_DISCOUNT;
     }
 }

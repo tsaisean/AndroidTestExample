@@ -1,9 +1,13 @@
 package com.example.sean.androidtestexample.mockito;
 
+import com.example.sean.androidtestexample.Customer;
+import com.example.sean.androidtestexample.Order;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -22,6 +26,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -285,4 +290,60 @@ public class MockitoTest {
         verify(spy).add("one");
         verify(spy).add("two");
     }
+
+    @Test
+    public void test14_defaultReturnValues() {
+//        Customer customer = mock(Customer.class, Mockito.RETURNS_SMART_NULLS);
+//        Order order = customer.getOrder(1);
+//        order.getTotal();
+
+        Customer customer2 = mock(Customer.class, new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
+                if (invocationOnMock.getMethod().getReturnType() == Order.class) {
+                    return new Order(1, (Customer) invocationOnMock.getMock());
+                }
+                return null;
+            }
+        });
+        Order order2 = customer2.getOrder(1);
+        order2.getTotal();
+    }
+
+    @Test
+    public void test15_capturingArguments () {
+        Customer customer = mock(Customer.class);
+        customer.addOrder(new Order(1, customer));
+        customer.addOrder(new Order(2, customer));
+
+        ArgumentCaptor<Order> argument = ArgumentCaptor.forClass(Order.class);
+        verify(customer, times(2)).addOrder(argument.capture());
+
+        Assert.assertEquals(1, argument.getAllValues().get(0).getId());
+        Assert.assertEquals(2, argument.getAllValues().get(1).getId());
+        Assert.assertEquals(2, argument.getValue().getId());
+    }
+
+    @Test
+    public void test16_capturingArguments () {
+        Order order = mock(Order.class);
+        when(order.getDefaultVipDiscount()).thenCallRealMethod();
+
+        Assert.assertEquals(0.8f, order.getDefaultVipDiscount());
+    }
+
+    @Test
+    public void test17_resettingMocks () {
+        when(annotationMockedList.size()).thenReturn(10);
+
+        reset(annotationMockedList);
+
+        Assert.assertEquals(0, annotationMockedList.size());
+    }
+
+    @Test
+    public void test18_validateMockitoUsage() {
+        // https://static.javadoc.io/org.mockito/mockito-core/2.11.0/org/mockito/Mockito.html#framework_validation
+    }
+
 }

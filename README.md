@@ -19,11 +19,11 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 11. Stubbing with callbacks
 12. doReturn()|doThrow()|doAnswer()|doNothing()|doCallRealMethod() family of methods
 13. Spying on real objects
-14. **TODO:** Changing default return values of unstubbed invocations (Since 1.7)
-15. **TODO:** Capturing arguments for further assertions (Since 1.8.0)
-16. **TODO:** Real partial mocks (Since 1.8.0)
-17. **TODO:** Resetting mocks (Since 1.8.0)
-18. **TODO:** Troubleshooting & validating framework usage (Since 1.8.0)
+14. Changing default return values of unstubbed invocations (Since 1.7)
+15. Capturing arguments for further assertions (Since 1.8.0)
+16. Real partial mocks (Since 1.8.0)
+17. Resetting mocks (Since 1.8.0)
+18. Troubleshooting & validating framework usage (Since 1.8.0)
 19. **TODO:** Aliases for behavior driven development (Since 1.8.0)
 20. **TODO:** Serializable mocks (Since 1.8.1)
 21. **TODO:** New annotations: @Captor, @Spy, @InjectMocks (Since 1.8.3)
