@@ -17,6 +17,12 @@ import static org.mockito.Mockito.when;
  * Created by Sean on 2017/9/18.
  */
 
+
+/**
+ * 25. Verification ignoring stubs (Since 1.9.0) <p>
+ *
+ * See <a href="https://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html#ignore_stubs_verification">Verification ignoring stubs</a>
+ */
 public class MockitoTest_25 {
 
     @Before
