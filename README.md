@@ -24,13 +24,13 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 16. Real partial mocks (Since 1.8.0)
 17. Resetting mocks (Since 1.8.0)
 18. Troubleshooting & validating framework usage (Since 1.8.0)
-19. **TODO:** Aliases for behavior driven development (Since 1.8.0)
-20. **TODO:** Serializable mocks (Since 1.8.1)
-21. **TODO:** New annotations: @Captor, @Spy, @InjectMocks (Since 1.8.3)
-22. **TODO:** Verification with timeout (Since 1.8.5)
-23. **TODO:** Automatic instantiation of @Spies, @InjectMocks and constructor injection goodness (Since 1.9.0)
-24. **TODO:** One-liner stubs (Since 1.9.0)
-25. **TODO:** Verification ignoring stubs (Since 1.9.0)
+19. Aliases for behavior driven development (Since 1.8.0)
+20. Serializable mocks (Since 1.8.1)
+21. New annotations: @Captor, @Spy, @InjectMocks (Since 1.8.3)
+22. Verification with timeout (Since 1.8.5)
+23. Automatic instantiation of @Spies, @InjectMocks and constructor injection goodness (Since 1.9.0)
+24. One-liner stubs (Since 1.9.0)
+25. Verification ignoring stubs (Since 1.9.0)
 26. **TODO:** Mocking details (Improved in 2.2.x)
 27. **TODO:** Delegate calls to real instance (Since 1.9.5)
 28. **TODO:** MockMaker API (Since 1.9.5)
@@ -48,6 +48,9 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 40. **TODO:** (*new*) Improved productivity and cleaner tests with "stricter" Mockito (Since 2.+)
 41. **TODO:** (**new**) Advanced public API for framework integrations (Since 2.10.+)
 42. **TODO:** (**new**) New API for integrations: listening on verification start events (Since 2.11.+)
+43. **TODO:** (**new**) New API for integrations: MockitoSession is usable by testing frameworks (Since 2.15.+)
+44. **TODO:** Deprecated org.mockito.plugins.InstantiatorProvider as it was leaking internal API. it was replaced by org.mockito.plugins.InstantiatorProvider2 (Since 2.15.4)
+45. **TODO:** (**new**) New JUnit Jupiter (JUnit5+) extension
 
 ## Powermockito Examples
 1. Mock static methods.
@@ -55,4 +58,4 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 ## Roboletric Examples
 1. Assert the string value for the TextView.
 
-Ref: [Mockito's javadoc](https://static.javadoc.io/org.mockito/mockito-core/2.11.0/org/mockito/Mockito.html)
+Ref: [Mockito's javadoc](https://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html)

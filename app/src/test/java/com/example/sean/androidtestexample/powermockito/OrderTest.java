@@ -36,14 +36,14 @@ public class OrderTest {
         PowerMockito.mockStatic(CustomerUtils.class);
         Mockito.when(CustomerUtils.isVIP(any(Customer.class))).thenReturn(true);
 
-        Order order = new Order(1, customer);
+        Order order = new Order((long) 1, customer);
         order.setOriginalTotal(10);
         Assert.assertEquals(8f, order.getTotal());
     }
 
     @Test
     public void getTotal_mockOriginTotal() throws Exception {
-        Order order = PowerMockito.spy(new Order(1, customer));
+        Order order = PowerMockito.spy(new Order((long) 1, customer));
 
         PowerMockito.doReturn(20f).when(order, "getOriginalTotal");
         Assert.assertEquals(16f, order.getTotal());
