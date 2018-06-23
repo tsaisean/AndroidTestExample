@@ -33,4 +33,8 @@ public class Customer {
     public void addOrder(Order order) {
         orders.put(order.getId(), order);
     }
+
+    public HashMap<Long, Order> getOrders() {
+        return orders;
+    }
 }

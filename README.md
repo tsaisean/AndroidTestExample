@@ -41,16 +41,9 @@ The **AndroidTestExample** covered the most common used testing frameworks in An
 33. Mockito JUnit rule (Since 1.10.17)
 34. Switch on or off plugins (Since 1.10.15)
 35. Custom verification failure message (Since 2.1.0)
-36. **TODO:** Java 8 Lambda Matcher Support (Since 2.1.0)
-37. **TODO:** Java 8 Custom Answer Support (Since 2.1.0)
-38. **TODO:** Meta data and generic type retention (Since 2.1.0)
-39. **TODO:** Mocking final types, enums and final methods (Since 2.1.0)
-40. **TODO:** (*new*) Improved productivity and cleaner tests with "stricter" Mockito (Since 2.+)
-41. **TODO:** (**new**) Advanced public API for framework integrations (Since 2.10.+)
-42. **TODO:** (**new**) New API for integrations: listening on verification start events (Since 2.11.+)
-43. **TODO:** (**new**) New API for integrations: MockitoSession is usable by testing frameworks (Since 2.15.+)
-44. **TODO:** Deprecated org.mockito.plugins.InstantiatorProvider as it was leaking internal API. it was replaced by org.mockito.plugins.InstantiatorProvider2 (Since 2.15.4)
-45. **TODO:** (**new**) New JUnit Jupiter (JUnit5+) extension
+36. Java 8 Lambda Matcher Support (Since 2.1.0)
+37. Java 8 Custom Answer Support (Since 2.1.0)
+38. Meta data and generic type retention (Since 2.1.0)
 
 ## Powermockito Examples
 1. Mock static methods.
